@@ -1,5 +1,7 @@
-<ul>
+<span ng-if="!quotes.length">No quotes yet.</span>
+<ul ng-if="quotes.length">
   <li ng-repeat="quote in quotes">
     <q>{{ quote.quote }}</q> -{{ quote.author }}
+    <a href="#" ng-click="deleteQuote($event, $index)">Delete</a>
   </li>
 </ul>

@@ -1,3 +1,15 @@
 .center {
   margin: 0 auto;
 }
+
+.ng-untouched {
+  border-color: gray;
+}
+
+.ng-invalid {
+  border-color: red;
+}
+
+.ng-valid {
+  border-color: green;
+}

@@ -1,7 +1,14 @@
-<form>
+<form name="quoteForm">
   <label>Quote</label>
-  <input type="text" name="message" ng-model="quote">
+  <input type="text" name="message" ng-model="quote"
+    ng-minlength="2">
+  <span>{{ messageError }}</span>
   <label>Author</label>
-  <input type="text" name="author" ng-model="author">
-  <input type="submit" ng-click="updateQuotes($event, quote, author)">
+  <input type="text" name="author" ng-model="author"
+    ng-minlength="2"
+    ng-maxlength="32">
+    <span>{{ authorError }}</span>
+  <input type="submit" ng-click="addQuote($event)" ng-if="quoteForm.$valid">
 </form>
+
+<p>{{ quoteForm.message }}</p>
