@@ -1,5 +1,5 @@
-directiveMadness.controller('QuotesCtrl', ['$scope', function($scope) {
-  $scope.quotes = [];
+directiveMadness.controller('QuotesCtrl', ['$scope', 'Quote', function($scope, Quote) {
+  $scope.quotes = Quote.getQuotes();
   $scope.edits = { index: false }
   // $scope.updateQuotes = function(e, quote, author) {
   //   e.preventDefault();
@@ -12,7 +12,7 @@ directiveMadness.controller('QuotesCtrl', ['$scope', function($scope) {
   // };
 }]);
 
-directiveMadness.directive('quoteForm', function(){
+directiveMadness.directive('quoteForm', ['Quote', function(Quote){
   return {
     templateUrl: "directives/quote-form.html",
     restrict: "E",
@@ -21,7 +21,7 @@ directiveMadness.directive('quoteForm', function(){
       scope.addQuote = function(e) {
         if (scope.quoteForm.$valid) {
           e.preventDefault();
-          scope.quotes.push(
+          Quote.createQuote(
             {
               quote: scope.quote,
               author: scope.author
@@ -37,7 +37,7 @@ directiveMadness.directive('quoteForm', function(){
       };
     }
   };
-});
+}]);
 
 directiveMadness.directive('quoteIndex', function(){
 
