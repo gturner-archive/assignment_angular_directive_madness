@@ -20,6 +20,11 @@ directiveMadness.directive('isolated', function() {
     link: function(scope) {
       scope.twoWay = "new Graham";
       scope.oneWay = "new Phil";
+      var captured = scope.sayHello;
+      scope.sayHello = function(name) {
+        captured(name);
+        console.log("from isolated scope")
+      };
     }
 
   }
