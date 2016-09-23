@@ -4,9 +4,7 @@
   <title>Warmups</title>
   <!-- Angular -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-  <script src="photos.js"></script>
   <script src="app.js"></script>
-  <script src="photos_cont.js"></script>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -19,15 +17,16 @@
 
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-<body class="container">
+<body class="container" ng-mousedown="mouseState = 'Down'" ng-mouseup="mouseState = 'Up'">
 <nav-bar></nav-bar>
-<main-header>Welcome!</main-header>
+<main-header>Warmups</main-header>
 
 <p ng-if="!radio">No number is selected.</p>
 <p ng-if="radio % 2 === 0">Even</p>
 <p ng-if="radio % 2 === 1">Odd</p>
 <p colorize color="red" background="black">{{ radio }}</p>
 <p>Mouse Button is: {{ mouseState }}</p>
+<p ng-mouseover="hoverState = 'Hovering'" ng-mouseleave="hoverState = 'NOT hovering'">Hover state: {{ hoverState }}</p>
 
 <form>
   <input type="radio" name="warmup-radio" value="1" ng-model="radio">
@@ -36,6 +35,8 @@
   <input type="radio" name="warmup-radio" value="4" ng-model="radio">
   <input type="radio" name="warmup-radio" value="5" ng-model="radio">
 </form>
+
+<button ng-click="buttonClicked = 'I\'m clickable'" ng-dblclick="buttonClicked = 'I\'m double clickable'" ng-init="buttonClicked = 'Click me!'">{{  buttonClicked }}</button>
 
 <copyright>Google: </copyright>
 </body>
