@@ -1,6 +1,11 @@
 directiveMadness.controller('ScopesCtrl', ['$scope', function($scope) {
   $scope.twoWay = "Graham";
   $scope.oneWay = "Phil";
+
+  $scope.sayHello = function(name) {
+    console.log("hello " + name);
+  }
+
 }]);
 
 directiveMadness.directive('isolated', function() {
@@ -12,10 +17,9 @@ directiveMadness.directive('isolated', function() {
       oneWay: "@",
       sayHello: '&'
     },
-    limit: function(scope) {
-      scope.sayHello = function() {
-        console.log('Hello!')
-      };
+    link: function(scope) {
+      scope.twoWay = "new Graham";
+      scope.oneWay = "new Phil";
     }
 
   }
