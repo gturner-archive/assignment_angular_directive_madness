@@ -21,19 +21,22 @@
 </head>
 <body class="container">
 <nav-bar></nav-bar>
+<main-header>Welcome!</main-header>
 
-<p ng-if="radio">No number is selected.</p>
-<p>{{radio}}</p>
-<p></p>
-<p></p>
+<p ng-if="!radio">No number is selected.</p>
+<p ng-if="radio % 2 === 0">Even</p>
+<p ng-if="radio % 2 === 1">Odd</p>
+<p colorize color="red" background="black">{{ radio }}</p>
+<p>Mouse Button is: {{ mouseState }}</p>
 
 <form>
-  <input type="radio" name="warmup-radio" val="1" ng-model="radio">
-  <input type="radio" name="warmup-radio" val="2" ng-model="radio">
-  <input type="radio" name="warmup-radio" val="3" ng-model="radio">
-  <input type="radio" name="warmup-radio" val="4" ng-model="radio">
-  <input type="radio" name="warmup-radio" val="5" ng-model="radio">
+  <input type="radio" name="warmup-radio" value="1" ng-model="radio">
+  <input type="radio" name="warmup-radio" value="2" ng-model="radio">
+  <input type="radio" name="warmup-radio" value="3" ng-model="radio">
+  <input type="radio" name="warmup-radio" value="4" ng-model="radio">
+  <input type="radio" name="warmup-radio" value="5" ng-model="radio">
 </form>
 
+<copyright>Google: </copyright>
 </body>
 </html>
