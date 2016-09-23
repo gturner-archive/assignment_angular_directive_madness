@@ -32,7 +32,7 @@ directiveMadness.directive('quoteForm', function(){
 
           scope.quoteForm.$setPristine();
           scope.quoteForm.$setUntouched();
-        }
+        } 
       };
     }
   };

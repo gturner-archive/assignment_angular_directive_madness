@@ -2,13 +2,13 @@
   <label>Quote</label>
   <input type="text" name="message" ng-model="quote"
     ng-minlength="2">
-  <span>{{ messageError }}</span>
+  <span ng-if="quoteForm.message.$invalid">Quote must be at least 2 characters long</span>
   <label>Author</label>
   <input type="text" name="author" ng-model="author"
     ng-minlength="2"
     ng-maxlength="32">
-    <span>{{ authorError }}</span>
-  <input type="submit" ng-click="addQuote($event)" ng-if="quoteForm.$valid">
+  <span ng-if="quoteForm.author.$invalid">Author must be between 2-32 characters</span>
+  <input type="submit" ng-click="addQuote($event)" ng-if="quoteForm.$valid && !quoteForm.$pristine">
 </form>
 
-<p>{{ quoteForm.message }}</p>
+<!-- <p>{{ quoteForm.message }}</p> -->
