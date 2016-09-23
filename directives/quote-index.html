@@ -1,7 +1,13 @@
 <span ng-if="!quotes.length">No quotes yet.</span>
 <ul ng-if="quotes.length">
   <li ng-repeat="quote in quotes">
-    <q>{{ quote.quote }}</q> -{{ quote.author }}
+    <q ng-hide="edits.index === $index">{{ quote.quote }}</q> <span ng-hide="edits.index === $index">-{{ quote.author }}</span>
+    <form ng-show="edits.index === $index">
+      <input type="text" ng-model="newQuote">
+      <input type="text" ng-model="newAuthor">
+    </form>
     <a href="#" ng-click="deleteQuote($event, $index)">Delete</a>
+    <div>{{ quotes }}</div>
+    <a href="#" ng-click="editQuote($event, $index)">{{ edits.index === $index ? "Save" : "Edit" }}</a>
   </li>
 </ul>

@@ -23,7 +23,7 @@ directiveMadness.directive('isolated', function() {
       var captured = scope.sayHello;
       scope.sayHello = function(name) {
         captured(name);
-        console.log("from isolated scope")
+        console.log("from isolated scope");
       };
     }
 
