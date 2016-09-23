@@ -2,12 +2,15 @@
 <ul ng-if="quotes.length">
   <li ng-repeat="quote in quotes">
     <q ng-hide="edits.index === $index">{{ quote.quote }}</q> <span ng-hide="edits.index === $index">-{{ quote.author }}</span>
-    <form ng-show="edits.index === $index">
-      <input type="text" ng-model="newQuote">
-      <input type="text" ng-model="newAuthor">
+    <form name="editForm" ng-show="edits.index === $index">
+      <input type="text" name="message" ng-model="news.quote" ng-minlength="2">
+      <span ng-if="editForm.message.$invalid">Quote must be at least 2 characters long</span>
+      <input type="text" name="author" ng-model="news.author" ng-minlength="2"
+      ng-maxlength="32">
+      <span ng-if="editForm.author.$invalid">Author must be between 2-32 characters</span>
     </form>
     <a href="#" ng-click="deleteQuote($event, $index)">Delete</a>
-    <div>{{ quotes }}</div>
-    <a href="#" ng-click="editQuote($event, $index)">{{ edits.index === $index ? "Save" : "Edit" }}</a>
+    <a href="#" ng-click="editQuote($event, $index, editForm)">{{ edits.index === $index ? "Save" : "Edit" }}</a>
+    <a href="#" ng-if="edits.index === $index" ng-click="edits.index = false">Cancel</a>
   </li>
 </ul>

@@ -49,22 +49,27 @@ directiveMadness.directive('quoteIndex', function(){
       edits: '='
     },
     link: function(scope) {
+      scope.news = {
+        author: "",
+        quote: ""
+      };
       scope.deleteQuote = function(e, index) {
         e.preventDefault();
         scope.quotes.splice(index, 1);
       };
-      scope.editQuote = function(e, index) {
+      scope.editQuote = function(e, index, editForm) {
         e.preventDefault();
-        console.log(scope);
         if (scope.edits.index === index) {
-          scope.quotes[index].quote = scope.newQuote;
-          scope.quotes[index].author = scope.newAuthor;
-          scope.newQuote = '';
-          scope.newAuthor = '';
-          scope.edits.index = false;
+          if(editForm.$valid) {
+            scope.quotes[index].quote = scope.news.quote;
+            scope.quotes[index].author = scope.news.author;
+            scope.newQuote = '';
+            scope.newAuthor = '';
+            scope.edits.index = false;
+          }
         } else {
-          scope.newQuote = scope.quotes[index].quote;
-          scope.newAuthor = scope.quotes[index].author;
+          scope.news.quote = scope.quotes[index].quote;
+          scope.news.author = scope.quotes[index].author;
           scope.edits.index = index;
         }
       };
